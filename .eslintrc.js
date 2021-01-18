@@ -26,5 +26,6 @@ module.exports = {
     'react/destructuring-assignment': 0,
     'react/no-access-state-in-setstate': 0,
     'no-console': 0,
+    'react/no-array-index-key': 0,
   },
 };
