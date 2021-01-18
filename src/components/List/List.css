@@ -7,10 +7,10 @@ ul.list-task{
 
 ul.list-task > li{
   display: flex;
-  font-size: 0.8em;
+  font-size: 0.6em;
   color: rgb(255, 0, 0);
   cursor: pointer;
-  margin: 5px;
+  margin-top: 10px;
   justify-content: space-between;
 }
 
