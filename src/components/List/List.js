@@ -7,11 +7,11 @@ import './List.css';
 
 export default class List extends Component {
    handleClick = async (e) => {
-     if (e.target.style.color === 'rgb(255, 0, 0)' || e.target.style.color === '') {
-       e.target.style.color = 'rgb(0, 255, 0)';
+     if (e.target.style.color === 'rgb(0, 0, 0)' || e.target.style.color === '') {
+       e.target.style.color = 'rgb(0, 0, 255)';
        e.target.style.textDecoration = 'line-through';
      } else {
-       e.target.style.color = 'rgb(255, 0, 0)';
+       e.target.style.color = 'rgb(0, 0, 0)';
        e.target.style.textDecoration = 'none';
      }
    }
@@ -26,7 +26,8 @@ export default class List extends Component {
                {': '}
                {lst}
              </p>
-             <Button type="button" key={index} />
+             <Button type="button" icon="edit" func={this.props.edit} index={index} />
+             <Button type="button" icon="trash" func={this.props.delete} index={index} />
            </li>
          ))}
        </ul>
