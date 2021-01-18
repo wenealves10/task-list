@@ -4,12 +4,14 @@ import './Main.css';
 
 const initialState = {
   newList: '',
+  index: -1,
 };
 
 export default class Main extends React.Component {
   state = {
     newList: '',
     list: [],
+    index: -1,
   }
 
   componentDidMount() {
@@ -27,17 +29,14 @@ export default class Main extends React.Component {
   }
 
   handleEdit = (e, index) => {
-    console.log('Edit', index);
     let { newList } = this.state;
     const list = [...this.state.list];
     newList = list[index];
     this.setState({ newList });
-    list.splice(index, 1);
-    this.setState({ list });
+    this.setState({ index });
   }
 
   handleDelete = (e, index) => {
-    console.log('Delete', index);
     const { list } = this.state;
     const newList = [...list];
     newList.splice(index, 1);
@@ -52,12 +51,19 @@ export default class Main extends React.Component {
     if (newList.length > 2) {
       newList = newList.trim();
       if (list.indexOf(newList) !== -1) return;
+      console.log(this.state.index);
+      if (this.state.index !== -1) {
+        list.splice(this.state.index, 1, newList);
+        this.setState({ list, newList: initialState.newList, index: initialState.index });
+        localStorage.setItem('list', list);
+        return;
+      }
       list.push(newList);
       console.log(list);
       console.log('State:', this.state.list);
       this.setState({ list, newList: initialState.newList });
+      localStorage.setItem('list', list);
     }
-    localStorage.setItem('list', list);
   }
 
   render() {
