@@ -3,4 +3,13 @@ button.trash{
   background-color: rgba(253,29,29,1);
   color: white;
   font-weight: bold;
+  margin-right: 10px;
+}
+
+button.edit{
+  border: 0;
+  background-color: rgb(29, 44, 253);
+  color: white;
+  font-weight: bold;
+  margin-right: 10px;
 }
