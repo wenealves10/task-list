@@ -15,7 +15,7 @@ export default class Main extends React.Component {
   componentDidMount() {
     let list = localStorage.getItem('list');
     if (list !== null) {
-      list = list.split(',');
+      list = list.length !== 0 ? list.split(',') : [];
       this.setState({ list });
     }
   }
@@ -26,10 +26,33 @@ export default class Main extends React.Component {
     });
   }
 
-  handleClick = () => {
+  handleEdit = (e, index) => {
+    console.log('Edit', index);
+    let { newList } = this.state;
     const list = [...this.state.list];
-    if (this.state.newList.length > 2) {
-      list.push(this.state.newList);
+    newList = list[index];
+    this.setState({ newList });
+    list.splice(index, 1);
+    this.setState({ list });
+  }
+
+  handleDelete = (e, index) => {
+    console.log('Delete', index);
+    const { list } = this.state;
+    const newList = [...list];
+    newList.splice(index, 1);
+    this.setState({ list: newList });
+    localStorage.setItem('list', newList);
+  }
+
+  handleClick = (e) => {
+    e.preventDefault();
+    const list = [...this.state.list];
+    let { newList } = this.state;
+    if (newList.length > 2) {
+      newList = newList.trim();
+      if (list.indexOf(newList) !== -1) return;
+      list.push(newList);
       console.log(list);
       console.log('State:', this.state.list);
       this.setState({ list, newList: initialState.newList });
@@ -50,7 +73,7 @@ export default class Main extends React.Component {
           </button>
         </form>
         <hr />
-        <List list={this.state.list} />
+        <List list={this.state.list} delete={this.handleDelete} edit={this.handleEdit} />
       </div>
     );
   }
