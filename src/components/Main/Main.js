@@ -1,5 +1,6 @@
 import React from 'react';
 import List from '../List/List';
+import Form from '../Form/Form';
 import './Main.css';
 
 const initialState = {
@@ -67,17 +68,15 @@ export default class Main extends React.Component {
   }
 
   render() {
+    const { newList } = this.state;
     return (
       <div className="main">
         <h1>Lista de Tarefas</h1>
-        <form action="#">
-          <input type="text" onChange={this.handleChange} value={this.state.newList} />
-          <button type="submit" onClick={this.handleClick}>
-            <i className="fa fa-plus" />
-            {' '}
-            Adicionar
-          </button>
-        </form>
+        <Form
+          handleChange={this.handleChange}
+          handleClick={this.handleClick}
+          newList={newList}
+        />
         <hr />
         <List list={this.state.list} delete={this.handleDelete} edit={this.handleEdit} />
       </div>
