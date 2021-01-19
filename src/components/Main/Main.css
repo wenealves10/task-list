@@ -14,37 +14,3 @@
   color: rgb(148, 13, 3);
 }
 
-.main form >  input[type=text]{
-  height: 40px;
-  width: 100%;
-  max-width: 50%;
-  margin: 0 auto;
-  border: 2px solid red;
-  padding: 8px;
-  font-size: 0.5em;
-  line-height: 35px;
-  font-weight: bold;
-  color: rgb(8, 8, 8);
-}
-
-.main form > button[type=submit]{
-  width: 100%;
-  max-width: 50%;
-  display: block;
-  color: white;
-  font-weight: bold;
-  font-size: 0.6em;
-  margin: 10px auto;
-  border: 0;
-  border-radius: 5px;
-  height: 40px;
-  background-color: rgba(253,29,29,1);
-}
-
-.main form > button[type=submit]:active{
-  background-color: rgb(112, 16, 16);
-}
-
-.main form {
-  text-align: center;
-}
